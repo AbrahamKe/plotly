@@ -1,0 +1,194 @@
+  
+  <html>
+   <head>
+        <!-- Load plotly.js  -->
+              <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+			 <!--<script src="https://cdn.rawgit.com/abdennour/react-csv/6424b500/cdn/react-csv-latest.min.js" type="text/javascript"></script> -->
+			 <script src="http://d3js.org/d3.v3.min.js">
+			 
+   <style> 
+	#plot {
+        width: 1000px;
+        height: 700px
+		}
+			 
+  </style>					  
+   </head>
+   <body>
+   
+
+   <div id="plot"></div>
+
+    <script>
+	
+  //const CSV = 'box.csv';
+  
+ const CSV =  "https://github.com/AbrahamKe/plotly/blob/master/box.csv"
+      
+  function plotFromCSV() {
+      plotly.d3.csv (CSV,function (err,rows) {
+	     console.log(rows);
+	    processData(rows);
+	     });
+     
+	 
+	 function processData(allRows) {
+	         let y1= [];
+			 let y2= [];
+			 let y3= [];
+			 let y4= [];
+			 let y5= [];
+			 let y6= [];
+			 let y7= [];
+			 let y8= [];
+			 let y9= [];
+			 let y10= [];
+			 let y11= [];
+			 let y12= [];
+			 			 
+			 let row ;
+			 let i = 0 
+			 
+			 while (i < allRows.length) {
+			 
+			      row = allRows [i];
+				  
+				  y1.push (row ['January']);
+				  y2.push (row ['February']);
+	              y3.push (row ['March']);
+				  y4.push (row ['April']);
+				  y5.push (row ['May']);
+				  y6.push (row ['June']);
+				  y7.push (row ['July']);
+				  y8.push (row ['August']);
+	              y9.push (row ['September']);
+				  y10.push (row ['October']);
+				  y11.push (row ['November']);
+				  y12.push (row ['December']);
+				  
+				  
+				  i += 1 ;
+				  
+				  
+			}
+				  makePlotly ( y1 , y2 , y3 , y4 , y5 , y6 , y7 , y8 ,y9 , y10 , y11 , y12);
+		  }
+		   function makePlotly ( y1 , y2 , y3 , y4 , y5 , y6 , y7 , y8 ,y9 , y10 , y11 , y12) {
+		   
+		          let traces = [
+				   
+				    { 
+					
+					y: y1,
+					type: 'box',
+					boxmean: 'all',
+					name : '1'
+					},
+					
+					{
+					y: y2,
+					type:'box',
+					boxmean: 'all',
+					name : '2'
+					},
+					
+					{
+					y: y3,
+					type:'box',
+					boxmean: 'all',
+					name : '3'
+					},
+
+                    {
+					y: y4,
+					type:'box',
+					boxmean: 'all',
+					name : '4'
+					  },
+                      { 
+                    y: y5,
+					type:'box',
+					boxmean: 'all',
+					name : '5'
+					},
+
+
+                     {
+                    y: y6,
+					type:'box',
+					boxmean: 'all',
+					name : '6'
+					},
+                      {
+                    y: y7,
+					type:'box',
+					boxmean: 'all',
+					name : '7'
+					},
+                      {
+                    y: y8,
+					type:'box',
+					boxmean: 'all',
+					name : '8'
+					},
+					
+					{
+					
+                    y: y9,
+					type: 'box',
+					boxmean: 'all',
+					name : '9'
+					},
+                      {
+                    y: y10,
+					type:'box',
+					boxmean: 'all',
+					name : '10'
+					},
+                      
+					  {
+					y: y11,
+					type:'box',
+					boxmean: 'all',
+					name : '11'
+					},
+                        {
+                    y: y12,
+					type: 'box',
+					boxmean: 'all',
+					name : '12'
+					}
+				];
+				
+				
+				let layout = { 
+				  title: "monthly average sound pressure  " ,
+				  yaxis: { 
+				  title: "Monthly average Sound Pressure level [dBre 1Micropa]",
+				  gridecolor: "lightgrey" ,
+				  gridwidth: 2,
+				  zerolinewidth: 3
+				  } ,
+				  xaxis: {
+				  title: "month" ,
+				  showgrid: false,
+				  zerolinewidth: false
+				  }
+				  
+				  };
+				  
+				  let Config = { responsive: true } ;
+				  
+
+                  plotly.newplot("plot" , traces , layout , Config)	;
+                
+				}	
+
+              plotFromCSV();
+			  
+			  } ;
+        
+
+         </script>
+       </body>
+   </html>
