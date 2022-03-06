@@ -9,30 +9,25 @@
    <style> 
 	#plot {
         width: 1000px;
-        height: 700px
+        height: 710px
 		}
 			 
   </style>					  
+
+  
    </head>
    <body>
-   
-
    <div id="plot"></div>
-
-    <script>
-	
-  //const CSV = 'box.csv';
-  
- const CSV =  "https://github.com/AbrahamKe/plotly/blob/master/box.csv"
+   <script>
+	//const CSV = 'box.csv';
+   const CSV =  "https://github.com/AbrahamKe/plotly/blob/master/box.csv"
       
   function plotFromCSV() {
       plotly.d3.csv (CSV,function (err,rows) {
 	     console.log(rows);
 	    processData(rows);
 	     });
-     
-	 
-	 function processData(allRows) {
+     function processData(allRows) {
 	         let y1= [];
 			 let y2= [];
 			 let y3= [];
@@ -45,7 +40,6 @@
 			 let y10= [];
 			 let y11= [];
 			 let y12= [];
-			 			 
 			 let row ;
 			 let i = 0 
 			 
@@ -65,11 +59,9 @@
 				  y10.push (row ['October']);
 				  y11.push (row ['November']);
 				  y12.push (row ['December']);
-				  
-				  
+				  			  
 				  i += 1 ;
-				  
-				  
+				  				  
 			}
 				  makePlotly ( y1 , y2 , y3 , y4 , y5 , y6 , y7 , y8 ,y9 , y10 , y11 , y12);
 		  }
@@ -159,8 +151,7 @@
 					name : '12'
 					}
 				];
-				
-				
+								
 				let layout = { 
 				  title: "monthly average sound pressure  " ,
 				  yaxis: { 
@@ -178,17 +169,13 @@
 				  };
 				  
 				  let Config = { responsive: true } ;
-				  
-
-                  plotly.newplot("plot" , traces , layout , Config)	;
+				  plotly.newplot("plot" , traces , layout , Config)	;
                 
 				}	
 
               plotFromCSV();
 			  
 			  } ;
-        
-
-         </script>
+             </script>
        </body>
    </html>
